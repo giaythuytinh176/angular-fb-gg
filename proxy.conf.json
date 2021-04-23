@@ -1,0 +1,10 @@
+{
+    "/auth": {
+      "target": "https://localhost",
+      "secure": true,
+      "pathRewrite": {
+      "^/auth": ""
+    },
+      "changeOrigin": true
+    }
+  }
