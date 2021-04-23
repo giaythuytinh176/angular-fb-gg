@@ -12,6 +12,8 @@ import { Observable, of } from 'rxjs';
 })
 export class RecipesComponent implements OnInit {
   inBrowser: boolean;
+  showData: boolean = false;
+  data: any;
 
   constructor(
     @Inject(PLATFORM_ID) private readonly platformId: Object,
@@ -33,8 +35,11 @@ export class RecipesComponent implements OnInit {
               .subscribe((params: Params) => {
                 console.log('parraFB', params);
                 localStorage.setItem('token', params.token.token);
+                localStorage.setItem('method', 'facebook');
                 this.router.navigate(['/']);
                 this.toasrt.success(`Login Account Facebook ${params.body.email} successfully.`);
+                this.showData = true;
+                this.data = (params.body);
               });
           } else
             if (params.code) {
@@ -43,8 +48,11 @@ export class RecipesComponent implements OnInit {
                 .subscribe((params: Params) => {
                   console.log('parraGG', params);
                   localStorage.setItem('token', params.token.token);
+                  localStorage.setItem('method', 'google');
                   this.router.navigate(['/']);
                   this.toasrt.success(`Login Account Google ${JSON.parse(params.body).email} successfully.`);
+                  this.showData = true;
+                  this.data = JSON.parse(params.body);
                 });
             }
         }
