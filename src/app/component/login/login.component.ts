@@ -15,11 +15,11 @@ export class LoginComponent implements OnInit {
     headers: new HttpHeaders({
       // 'Access-Control-Allow-Origin': '*',
       // 'Access-Control-Allow-Credentials': true,
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
+      // 'Content-Type': 'application/json',
+      // 'Accept': 'application/json',
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
-      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
+      // 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+      // 'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
     })
   };
 
@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
 
   ) {
     this.corsHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
+      // 'Content-Type': 'application/json',
+      // 'Accept': 'application/json',
       'Access-Control-Allow-Origin': '*',  // edit 
     });
   }
