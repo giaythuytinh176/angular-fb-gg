@@ -37,15 +37,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  goToLoginUrlFacebook() {
-    this.document.location.href = 'http://localhost:3000/auth/facebook';
-  }
-
-  goToLoginUrlGoogle() {
-    this.document.location.href = 'http://localhost:3000/auth/google';
-  }
-
-
   requestFacebookRedirectUri(): Observable<any> {
     return this.httpClient.get('http://localhost:3000/auth/facebook', this.httpJson);
   }
