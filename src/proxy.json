@@ -1,0 +1,6 @@
+{
+    "/auth/facebook": {
+      "target": "http://localhost:3000/auth/facebook",
+      "secure": false
+    }
+  }

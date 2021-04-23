@@ -9,12 +9,14 @@ import {Observable, of} from 'rxjs';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
+  corsHeaders: any;
   httpJson = {
     headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
+      // 'Access-Control-Allow-Origin': '*',
       // 'Access-Control-Allow-Credentials': true,
       'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Origin': 'http://localhost:4200',
       'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
       'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
     })
@@ -24,7 +26,13 @@ export class LoginComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     private readonly httpClient: HttpClient,
 
-  ) { }
+  ) {
+    this.corsHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Origin': '/',  // edit 
+    });
+  }
 
   ngOnInit(): void { }
 
@@ -33,12 +41,12 @@ export class LoginComponent implements OnInit {
   }
 
   goToLoginUrlGoogle() {
-    this.document.location.href = 'http://localhost:3000/auth/google', this.httpJson;
+    this.document.location.href = 'http://localhost:3000/auth/google';
   }
 
 
   requestFacebookRedirectUri(): Observable<any> {
-    return this.httpClient.get('http://localhost:3000/auth/facebook', this.httpJson);
+    return this.httpClient.get('http://localhost:3000/auth/facebook', this.corsHeaders);
   }
 
 
