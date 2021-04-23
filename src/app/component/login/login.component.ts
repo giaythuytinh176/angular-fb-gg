@@ -10,7 +10,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  corsHeaders: any;
   httpJson = {
     headers: new HttpHeaders({
       // 'Access-Control-Allow-Origin': '*',
@@ -26,25 +25,17 @@ export class LoginComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private readonly httpClient: HttpClient,
-
-  ) {
-    this.corsHeaders = new HttpHeaders({
-      // 'Content-Type': 'application/json',
-      // 'Accept': 'application/json',
-      'Access-Control-Allow-Origin': '*',  // edit 
-    });
-  }
+  ) { }
 
   ngOnInit(): void { }
 
   requestFacebookRedirectUri(): Observable<any> {
-    return this.httpClient.get('http://localhost:3000/auth/facebook', this.httpJson);
+    return this.httpClient.get('http://localhost:3000/auth/facebook/uri', this.httpJson);
   }
 
   requestGoogleRedirectUri(): Observable<any> {
-    return this.httpClient.get('http://localhost:3000/auth/google', this.httpJson);
+    return this.httpClient.get('http://localhost:3000/auth/google/uri', this.httpJson);
   }
-
 
   facebookLogin() {
     this.requestFacebookRedirectUri()
@@ -57,7 +48,6 @@ export class LoginComponent implements OnInit {
       });
   }
 
-
   googleLogin() {
     this.requestGoogleRedirectUri()
       .subscribe((response: { redirect_uri: string }) => {
@@ -69,8 +59,4 @@ export class LoginComponent implements OnInit {
       });
   }
 
-}
-
-export interface IToken {
-  readonly token: string;
 }
