@@ -44,7 +44,6 @@ export class LoginComponent implements OnInit {
         window.location.replace(response.redirect_uri);
       }, (error: any) => {
         console.log('errorFacebook', error);
-        window.location.replace(error.url);
       });
   }
 
@@ -55,7 +54,6 @@ export class LoginComponent implements OnInit {
         window.location.replace(response.redirect_uri);
       }, (error: any) => {
         console.log('errorGoogle', error);
-        window.location.replace(error.url);
       });
   }
 
