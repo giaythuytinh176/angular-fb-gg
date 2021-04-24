@@ -7,9 +7,10 @@ import { LoginComponent } from './component/login/login.component';
 import { RecipesComponent } from './component/recipes/recipes.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AllUsersComponent } from './component/user/all-users/all-users.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RecipesComponent],
+  declarations: [AppComponent, LoginComponent, RecipesComponent, AllUsersComponent],
   imports: [
     HttpClientModule,
     BrowserModule,
