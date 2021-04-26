@@ -22,7 +22,7 @@ import { AllUsersComponent } from './component/user/all-users/all-users.componen
         preventDuplicates: true,
       }
     ),],
-  providers: [],
+  providers: [LoginComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

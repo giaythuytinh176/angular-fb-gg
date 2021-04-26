@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'https://backend-tamle.ap.ngrok.io',
+
 };
 
 /*

@@ -3,6 +3,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-login',
@@ -25,16 +28,18 @@ export class LoginComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private readonly httpClient: HttpClient,
+    public toasrt: ToastrService,
+    private readonly router: Router,
   ) { }
 
   ngOnInit(): void { }
 
   requestFacebookRedirectUri(): Observable<any> {
-    return this.httpClient.get('https://backend-tamle.ap.ngrok.io/auth/facebook/uri', this.httpJson);
+    return this.httpClient.get(`${environment.apiUrl}/auth/facebook/uri`, this.httpJson);
   }
 
   requestGoogleRedirectUri(): Observable<any> {
-    return this.httpClient.get('https://backend-tamle.ap.ngrok.io/auth/google/uri', this.httpJson);
+    return this.httpClient.get(`${environment.apiUrl}/auth/google/uri`, this.httpJson);
   }
 
   facebookLogin() {

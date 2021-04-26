@@ -4,6 +4,7 @@ import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-recipes',
@@ -61,11 +62,11 @@ export class RecipesComponent implements OnInit {
   }
 
   facebookSignIn(code: string): Observable<any> {
-    return this.httpClient.post('https://backend-tamle.ap.ngrok.io/auth/facebook/signin', { code });
+    return this.httpClient.post(`${environment.apiUrl}/auth/facebook/signin`, { code });
   }
 
   googleSignIn(code: string): Observable<any> {
-    return this.httpClient.post('https://backend-tamle.ap.ngrok.io/auth/google/signin', { code });
+    return this.httpClient.post(`${environment.apiUrl}/auth/google/signin`, { code });
   }
 
 

@@ -1,9 +1,11 @@
 <br><br><br>
 <div class="container text-center">
 
+  <button (click)=apiDocument() class="btn btn-primary btn-lg"> Api Document </button> &nbsp;
   <a [routerLink]="['/login']" class="btn btn-primary btn-lg"> Login </a> &nbsp;
   <a [routerLink]="['/recipes']" class="btn btn-primary btn-lg"> Recipes </a>&nbsp;
   <a [routerLink]="['/getAllUsers']" class="btn btn-primary btn-lg"> Get All Users </a>&nbsp;
+  <button (click)=signOut() class="btn btn-danger btn-lg"> Logout </button>&nbsp;
 
 </div>
 
