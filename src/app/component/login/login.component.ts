@@ -30,11 +30,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { }
 
   requestFacebookRedirectUri(): Observable<any> {
-    return this.httpClient.get('http://localhost:3000/auth/facebook/uri', this.httpJson);
+    return this.httpClient.get('https://backend-tamle.ap.ngrok.io/auth/facebook/uri', this.httpJson);
   }
 
   requestGoogleRedirectUri(): Observable<any> {
-    return this.httpClient.get('http://localhost:3000/auth/google/uri', this.httpJson);
+    return this.httpClient.get('https://backend-tamle.ap.ngrok.io/auth/google/uri', this.httpJson);
   }
 
   facebookLogin() {
@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
         window.location.replace(response.redirect_uri);
       }, (error: any) => {
         console.log('errorFacebook', error);
+        window.location.replace(error.redirect_uri);
       });
   }
 
@@ -54,6 +55,7 @@ export class LoginComponent implements OnInit {
         window.location.replace(response.redirect_uri);
       }, (error: any) => {
         console.log('errorGoogle', error);
+        window.location.replace(error.redirect_uri);
       });
   }
 

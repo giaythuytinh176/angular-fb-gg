@@ -61,11 +61,11 @@ export class RecipesComponent implements OnInit {
   }
 
   facebookSignIn(code: string): Observable<any> {
-    return this.httpClient.post('http://localhost:3000/auth/facebook/signin', { code });
+    return this.httpClient.post('https://backend-tamle.ap.ngrok.io/auth/facebook/signin', { code });
   }
 
   googleSignIn(code: string): Observable<any> {
-    return this.httpClient.post('http://localhost:3000/auth/google/signin', { code });
+    return this.httpClient.post('https://backend-tamle.ap.ngrok.io/auth/google/signin', { code });
   }
 
 

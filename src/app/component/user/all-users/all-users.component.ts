@@ -27,7 +27,7 @@ export class AllUsersComponent implements OnInit {
   }
 
   getAllUsers(): any {
-    this.http.get<any[]>('http://localhost:3000/user', this.httpJson)
+    this.http.get<any[]>('https://backend-tamle.ap.ngrok.io/user', this.httpJson)
       .subscribe((data: any) => {
         this.data = data;
         console.log('data', data);
