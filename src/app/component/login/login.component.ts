@@ -13,20 +13,19 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  httpJson = {
-    headers: new HttpHeaders({
-      // 'Access-Control-Allow-Origin': '*',
-      // 'Access-Control-Allow-Credentials': true,
-      // 'Content-Type': 'application/json',
-      // 'Accept': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      // 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
-      // 'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
-    })
-  };
+  // httpJson = {
+  //   headers: new HttpHeaders({
+  //     // 'Access-Control-Allow-Origin': '*',
+  //     // 'Access-Control-Allow-Credentials': true,
+  //     // 'Content-Type': 'application/json',
+  //     // 'Accept': 'application/json',
+  //     'Access-Control-Allow-Origin': '*',
+  //     // 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+  //     // 'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
+  //   })
+  // };
 
   constructor(
-    @Inject(DOCUMENT) private document: Document,
     private readonly httpClient: HttpClient,
     public toasrt: ToastrService,
     private readonly router: Router,
@@ -35,11 +34,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { }
 
   requestFacebookRedirectUri(): Observable<any> {
-    return this.httpClient.get(`${environment.apiUrl}/auth/facebook/uri`, this.httpJson);
+    return this.httpClient.get(`${environment.apiUrl}/auth/facebook/uri`);
   }
 
   requestGoogleRedirectUri(): Observable<any> {
-    return this.httpClient.get(`${environment.apiUrl}/auth/google/uri`, this.httpJson);
+    return this.httpClient.get(`${environment.apiUrl}/auth/google/uri`);
   }
 
   facebookLogin() {
@@ -49,7 +48,7 @@ export class LoginComponent implements OnInit {
         window.location.replace(response.redirect_uri);
       }, (error: any) => {
         console.log('errorFacebook', error);
-        window.location.replace(error.redirect_uri);
+        // window.location.replace(error.redirect_uri);
       });
   }
 
@@ -60,7 +59,7 @@ export class LoginComponent implements OnInit {
         window.location.replace(response.redirect_uri);
       }, (error: any) => {
         console.log('errorGoogle', error);
-        window.location.replace(error.redirect_uri);
+        // window.location.replace(error.redirect_uri);
       });
   }
 
